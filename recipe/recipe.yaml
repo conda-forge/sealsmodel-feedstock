@@ -47,6 +47,7 @@ tests:
 - python:
     imports:
       - seals
+      - seals.seals_cython_functions
       - hazelbean
     pip_check: true
 
