@@ -21,6 +21,12 @@ build:
 
 requirements:
   build:
+    - if: build_platform != host_platform
+      then:
+        - python
+        - cross-python_${{ host_platform }}
+        - cython
+        - numpy
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
   host:
@@ -44,11 +50,11 @@ requirements:
     - scipy <1.16.0
 
 tests:
-- python:
-    imports:
-      - seals
-      - hazelbean
-    pip_check: true
+  - python:
+      imports:
+        - seals
+        - hazelbean
+      pip_check: true
 
 about:
   homepage: https://github.com/jandrewjohnson/seals_dev
