@@ -49,6 +49,10 @@ tests:
         - seals
         - hazelbean
       pip_check: true
+      requires:
+        - pytest
+        - pytest-benchmark
+        - pytest-cov
 
 about:
   homepage: https://github.com/jandrewjohnson/seals_dev
