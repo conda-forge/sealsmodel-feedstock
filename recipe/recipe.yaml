@@ -44,12 +44,16 @@ requirements:
     - scipy <1.16.0
 
 tests:
-- python:
-    imports:
-      - seals
-      - seals.seals_cython_functions
-      - hazelbean
-    pip_check: true
+  - python:
+      imports:
+        - seals
+        - seals.seals_cython_functions
+        - hazelbean
+      pip_check: true
+      requires:
+        - pytest
+        - pytest-benchmark
+        - pytest-cov
 
 about:
   homepage: https://github.com/jandrewjohnson/seals_dev
