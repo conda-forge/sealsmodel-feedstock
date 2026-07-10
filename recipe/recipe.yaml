@@ -17,7 +17,7 @@ build:
   skip:
     - match(python, ">=3.12")
   script: python -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -44,11 +44,15 @@ requirements:
     - scipy <1.16.0
 
 tests:
-- python:
-    imports:
-      - seals
-      - hazelbean
-    pip_check: true
+  - python:
+      imports:
+        - seals
+        - hazelbean
+      pip_check: true
+      requires:
+        - pytest
+        - pytest-benchmark
+        - pytest-cov
 
 about:
   homepage: https://github.com/jandrewjohnson/seals_dev
