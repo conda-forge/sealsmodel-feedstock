@@ -21,6 +21,12 @@ build:
 
 requirements:
   build:
+    - if: build_platform != host_platform
+      then:
+        - python
+        - cross-python_${{ host_platform }}
+        - cython
+        - numpy
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
   host:
@@ -49,10 +55,15 @@ tests:
         - seals
         - hazelbean
       pip_check: true
-      requires:
+  - requirements:
+      run:
         - pytest
         - pytest-benchmark
         - pytest-cov
+      files:
+        source:
+          - tests/
+      script: pytest tests/
 
 about:
   homepage: https://github.com/jandrewjohnson/seals_dev
