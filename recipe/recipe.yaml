@@ -48,6 +48,9 @@ requirements:
     - pandas
     - pygeoprocessing
     - scipy <1.16.0
+    - pytest # until hazelbean's conda-forge config requires it
+    - pytest-cov # until hazelbean's conda-forge config requires it
+    - pytest-benchmark # until hazelbean's conda-forge config requires it
 
 tests:
   - python:
