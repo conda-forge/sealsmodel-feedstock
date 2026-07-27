@@ -44,13 +44,14 @@ requirements:
     - scipy <1.16.0
 
 tests:
-  - script:
-      - pytest [ $? -eq 5 ]
-    requirements:
-      run:
-        - pytest
-        - pytest-cov
-        - pytest-benchmark
+  # Uncomment once there are tests to run
+  #- script:
+  #    - pytest
+  #  requirements:
+  #    run:
+  #      - pytest
+  #      - pytest-cov
+  #      - pytest-benchmark
 
   - python:
       imports:
