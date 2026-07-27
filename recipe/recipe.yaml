@@ -45,7 +45,7 @@ requirements:
 
 tests:
   - script:
-      - pytest --suppress-no-test-exit-code
+      - pytest [ $? -eq 5 ]
     requirements:
       run:
         - pytest
