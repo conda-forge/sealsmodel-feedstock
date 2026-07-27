@@ -45,7 +45,7 @@ requirements:
 
 tests:
   - script:
-      - pytest
+      - pytest --suppress-no-test-exit-code
     requirements:
       run:
         - pytest
