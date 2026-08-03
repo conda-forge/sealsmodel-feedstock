@@ -21,6 +21,12 @@ build:
 
 requirements:
   build:
+    - if: build_platform != host_platform
+      then:
+        - python
+        - cross-python_${{ host_platform }}
+        - cython
+        - numpy
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
   host:
@@ -42,14 +48,31 @@ requirements:
     - pandas
     - pygeoprocessing
     - scipy <1.16.0
+    - pytest # until hazelbean's conda-forge config requires it
+    - pytest-cov # until hazelbean's conda-forge config requires it
+    - pytest-benchmark # until hazelbean's conda-forge config requires it
 
 tests:
-- python:
-    imports:
-      - seals
-      - seals.seals_cython_functions
-      - hazelbean
-    pip_check: true
+  # Uncomment once there are tests to run
+  #- script:
+  #    - pytest
+  #  requirements:
+  #    run:
+  #      - pytest
+  #      - pytest-cov
+  #      - pytest-benchmark
+
+  - python:
+      imports:
+        - seals
+        - seals.seals_cython_functions
+        - hazelbean
+      pip_check: true
+    requirements:
+      run:
+        - pytest
+        - pytest-cov
+        - pytest-benchmark
 
 about:
   homepage: https://github.com/jandrewjohnson/seals_dev
@@ -61,3 +84,4 @@ extra:
   recipe-maintainers:
     - phargogh
     - jandrewjohnson
+    - chiacsen
