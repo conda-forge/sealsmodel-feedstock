@@ -21,6 +21,12 @@ build:
 
 requirements:
   build:
+    - if: build_platform != host_platform
+      then:
+        - python
+        - cross-python_${{ host_platform }}
+        - cython
+        - numpy
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
   host:
@@ -42,6 +48,9 @@ requirements:
     - pandas
     - pygeoprocessing
     - scipy <1.16.0
+    - pytest # until hazelbean's conda-forge config requires it
+    - pytest-cov # until hazelbean's conda-forge config requires it
+    - pytest-benchmark # until hazelbean's conda-forge config requires it
 
 tests:
   # Uncomment once there are tests to run
