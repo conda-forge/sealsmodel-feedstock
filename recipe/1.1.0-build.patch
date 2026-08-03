@@ -1,0 +1,23 @@
+diff --git a/setup.py b/setup.py
+index 206a7c6..7ed5246 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,7 +1,7 @@
+ # setup.py — only needed to register custom commands like build_ext
+ from setuptools import setup
+ import numpy
+-from Cython.Distutils import build_ext
++from Cython.Build import cythonize
+ from setuptools.extension import Extension
+ 
+ ext_modules = [Extension('seals.seals_cython_functions',
+@@ -9,6 +9,5 @@ ext_modules = [Extension('seals.seals_cython_functions',
+                          include_dirs=[numpy.get_include()])]
+ 
+ setup(
+-    cmdclass={'build_ext': build_ext},
+-    ext_modules=ext_modules,
+-)
+\ No newline at end of file
++    ext_modules=cythonize(ext_modules),
++)
