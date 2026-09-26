@@ -51,6 +51,9 @@ requirements:
     - pytest # until hazelbean's conda-forge config requires it
     - pytest-cov # until hazelbean's conda-forge config requires it
     - pytest-benchmark <5.3 # until hazelbean's conda-forge config requires it.  v5.3 introduced dependency on py-cpuinfo2, which is not on conda-forge, which fails pip-check.
+    # A version incompatibility with rioxarray/xarray was causing a build failure on pip check.
+    - xarray >=2024.7.0
+    - rioxarray >=0.18.1
 
 tests:
   # Uncomment once there are tests to run
