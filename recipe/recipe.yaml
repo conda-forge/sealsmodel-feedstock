@@ -50,7 +50,7 @@ requirements:
     - scipy <1.16.0
     - pytest # until hazelbean's conda-forge config requires it
     - pytest-cov # until hazelbean's conda-forge config requires it
-    - pytest-benchmark # until hazelbean's conda-forge config requires it
+    - pytest-benchmark<5.3 # until hazelbean's conda-forge config requires it.  v5.3 introduced dependency on py-cpuinfo2, which is not on conda-forge, which fails pip-check.
 
 tests:
   # Uncomment once there are tests to run
