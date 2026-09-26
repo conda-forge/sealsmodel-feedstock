@@ -12,8 +12,6 @@ package:
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   sha256: 54772f506eb1dde47138713277becf572ee4be33b209a9df0a0c1f62a70b9196
-  patches:
-    - 1.1.0-build.patch  # Fix cython build in sealsmodel 1.1.0
 
 build:
   skip:
