@@ -3,7 +3,7 @@ schema_version: 1
 
 context:
   name: sealsmodel
-  version: "1.1.0"
+  version: "2.0.3"
 
 package:
   name: "${{ name|lower }}"
@@ -11,15 +11,13 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 8b001e4585257c44ee8be873846ac7eb8d17fdc93e7e254619105d3d2c2d0cb8
-  patches:
-    - 1.1.0-build.patch  # Fix cython build in sealsmodel 1.1.0
+  sha256: 54772f506eb1dde47138713277becf572ee4be33b209a9df0a0c1f62a70b9196
 
 build:
   skip:
     - match(python, ">=3.12")
   script: python -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
 
 requirements:
   build:
@@ -52,7 +50,10 @@ requirements:
     - scipy <1.16.0
     - pytest # until hazelbean's conda-forge config requires it
     - pytest-cov # until hazelbean's conda-forge config requires it
-    - pytest-benchmark # until hazelbean's conda-forge config requires it
+    - pytest-benchmark <5.3 # until hazelbean's conda-forge config requires it.  v5.3 introduced dependency on py-cpuinfo2, which is not on conda-forge, which fails pip-check.
+    # A version incompatibility with rioxarray/xarray was causing a build failure on pip check.
+    - xarray >=2024.7.0
+    - rioxarray >=0.18.1
 
 tests:
   # Uncomment once there are tests to run
