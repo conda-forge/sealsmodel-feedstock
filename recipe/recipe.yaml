@@ -3,7 +3,7 @@ schema_version: 1
 
 context:
   name: sealsmodel
-  version: "2.0.3"
+  version: "2.1.0"
 
 package:
   name: "${{ name|lower }}"
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 54772f506eb1dde47138713277becf572ee4be33b209a9df0a0c1f62a70b9196
+  sha256: e118c1dcd1313d02b4f84c99059b0e715cca7114ec1c9a57e8cca060fbcf9bde
 
 build:
   skip:
