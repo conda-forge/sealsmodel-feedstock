@@ -16,8 +16,12 @@ source:
 build:
   skip:
     - match(python, ">=3.12")
-  script: python -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  script: 
+    # Force re-cythonization by deleting any existing cython files.
+    # Re-cythonization needed because of varying numpy ABIs in conda-forge matrix.
+    - {{ PYTHON }} -c "import os; from pathlib import Path; [f.unlink() for f in Path(os.environ['SRC_DIR']).rglob('*.cpp')]"
+    - python -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   build:
