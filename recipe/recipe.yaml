@@ -52,7 +52,7 @@ requirements:
     - gdal
     - pandas
     - pygeoprocessing
-    - scipy <1.16.0
+    - scipy 
     - pytest # until hazelbean's conda-forge config requires it
     - pytest-cov # until hazelbean's conda-forge config requires it
     - pytest-benchmark <5.3 # until hazelbean's conda-forge config requires it.  v5.3 introduced dependency on py-cpuinfo2, which is not on conda-forge, which fails pip-check.
