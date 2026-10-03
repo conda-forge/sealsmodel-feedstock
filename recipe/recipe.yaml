@@ -15,9 +15,14 @@ source:
 
 build:
   skip:
-    - match(python, ">=3.12")
-  script: python -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+    - match(python, "<3.12")
+  # Force re-cythonization by deleting any existing cython files.
+  # Re-cythonization needed because of varying numpy ABIs in conda-forge matrix.
+  script: |
+    python -c "import os; from pathlib import Path; [f.unlink() for f in Path(os.environ['SRC_DIR']).rglob('*.cpp')]"
+    python -c "import os; from pathlib import Path; [f.unlink() for f in Path(os.environ['SRC_DIR']).rglob('*.c')]"
+    python -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   build:
@@ -35,19 +40,19 @@ requirements:
     - wheel
     - cython >3.0.0
     - setuptools_scm >=8.0.0
-    - numpy
+    - numpy 
     - pip
   run:
     - python
     - geopandas
     - google-cloud-storage
-    - hazelbean
+    - hazelbean 
     - matplotlib-base
     - netcdf4
     - gdal
     - pandas
     - pygeoprocessing
-    - scipy <1.16.0
+    - scipy 
     - pytest # until hazelbean's conda-forge config requires it
     - pytest-cov # until hazelbean's conda-forge config requires it
     - pytest-benchmark <5.3 # until hazelbean's conda-forge config requires it.  v5.3 introduced dependency on py-cpuinfo2, which is not on conda-forge, which fails pip-check.
