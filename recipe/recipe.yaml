@@ -46,7 +46,7 @@ requirements:
     - python
     - geopandas
     - google-cloud-storage
-    - hazelbean
+    - hazelbean >=2.1.0
     - matplotlib-base
     - netcdf4
     - gdal
