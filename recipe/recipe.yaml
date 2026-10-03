@@ -20,6 +20,7 @@ build:
     # Force re-cythonization by deleting any existing cython files.
     # Re-cythonization needed because of varying numpy ABIs in conda-forge matrix.
     python -c "import os; from pathlib import Path; [f.unlink() for f in Path(os.environ['SRC_DIR']).rglob('*.cpp')]"
+    python -c "import os; from pathlib import Path; [f.unlink() for f in Path(os.environ['SRC_DIR']).rglob('*.c')]"
     python -m pip install . -vv --no-deps --no-build-isolation
   number: 1
 
@@ -39,7 +40,7 @@ requirements:
     - wheel
     - cython >3.0.0
     - setuptools_scm >=8.0.0
-    - numpy >2.0
+    - numpy 
     - pip
   run:
     - python
