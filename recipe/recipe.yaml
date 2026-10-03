@@ -14,8 +14,8 @@ source:
   sha256: 12d50d93a79d12d33d7301d8f050f56bb989c5025ecda1eca3331cdc123f20e4
 
 build:
-  #skip:
-  #  - match(python, ">=3.12")
+  skip:
+    - match(python, "<3.12")
   # Force re-cythonization by deleting any existing cython files.
   # Re-cythonization needed because of varying numpy ABIs in conda-forge matrix.
   script: |
