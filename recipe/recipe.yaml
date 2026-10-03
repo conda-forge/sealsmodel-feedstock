@@ -39,7 +39,7 @@ requirements:
     - wheel
     - cython >3.0.0
     - setuptools_scm >=8.0.0
-    - numpy
+    - numpy >2.0
     - pip
   run:
     - python
